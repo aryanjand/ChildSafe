@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Header, Icon } from 'react-native-elements';
+import { Header, Icon } from '@rneui/themed';
+
 
 const CustomHeader = () => {
     return (
         <Header
+            containerStyle={styles.headerContainer}
+            rightContainerStyle={styles.icons}
             rightComponent={
                 <View style={styles.icons}>
                     <Icon name="question-circle" type="font-awesome-5" size={20} onPress={() => console.log('FQA')} />
@@ -12,10 +15,9 @@ const CustomHeader = () => {
                     {/* <Icon name="bug" type="font-awesome-5" size={20} onPress={() => console.log('Home')} /> */}
                 </View>
             }
-            containerStyle={styles.headerContainer}
         />
     );
-};
+}
 
 const styles = StyleSheet.create({
     headerContainer: {
