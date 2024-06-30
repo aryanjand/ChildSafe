@@ -6,6 +6,8 @@ import React, { useEffect } from 'react';
 import 'react-native-reanimated'
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { CustomHeader } from '@/components';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -35,12 +37,14 @@ export default function RootLayout() {
   };
 
   return (
-    <ThemeProvider value={customTheme}>
+    <SafeAreaProvider>
+      <ThemeProvider value={customTheme}>
 
-      <CustomHeader />
-      <Stack>
-        <Stack.Screen name="index" />
-      </Stack>
-    </ThemeProvider>
+        <CustomHeader />
+        <Stack>
+          <Stack.Screen name="index" />
+        </Stack>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
