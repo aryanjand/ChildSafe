@@ -1,5 +1,8 @@
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { useState } from "react";
 import { Text, View, StyleSheet, Switch } from "react-native";
+
 
 export default function Index() {
 
@@ -7,11 +10,10 @@ export default function Index() {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
-    <View
-      style={styles.viewContainer}
-    >
-      <Text style={styles.titleText}>Child<Text style={styles.enableColor}>Safe</Text></Text>
-      <View style={styles.switchContainer}>
+
+    <ThemedView style={styles.viewContainer}>
+      <ThemedText type="title" style={styles.titleText}>Child<Text style={styles.enableColor}>Safe</Text></ThemedText>
+      <ThemedView style={styles.switchContainer}>
         <Switch
           style={styles.switchButton}
           trackColor={{ false: '#767577', true: '#fed000' }}
@@ -19,26 +21,26 @@ export default function Index() {
           onValueChange={toggleSwitch}
           value={isEnabled}
         />
-        <Text style={styles.statusMessage}>
+        <ThemedText style={styles.statusMessage}>
           {
             isEnabled
               ?
-              <Text style={styles.enableColor}>Enabled</Text>
+              <ThemedText style={styles.enableColor}>Enabled</ThemedText>
               :
-              <Text>Disabled</Text>
+              <ThemedText>Disabled</ThemedText>
           }
-        </Text>
-      </View>
-      <Text style={styles.messageText}>
+        </ThemedText>
+      </ThemedView>
+      <ThemedText style={styles.messageText}>
         {
           isEnabled
             ?
-            <Text>Your phone is <Text style={styles.enableColor}>Child Safe.</Text></Text>
+            <ThemedText>Your phone is <ThemedText style={styles.enableColor}>Child Safe.</ThemedText></ThemedText>
             :
-            <Text>Your phone is not Child Safe.</Text>
+            <ThemedText>Your phone is not Child Safe.</ThemedText>
         }
-      </Text>
-    </View>
+      </ThemedText>
+    </ThemedView>
   );
 
 }
@@ -49,15 +51,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    marginTop: 75,
     alignItems: 'center',
-    // Use padding or margin to create gaps between child elements
-    paddingVertical: 10, // Adjust as needed
+    padding: 45,
   },
   titleText: {
-    flexGrow: 0.12,
-    fontSize: 50,
-    fontWeight: 600,
+    flexGrow: 0.15,
   },
   switchContainer: {
     flex: 1,
